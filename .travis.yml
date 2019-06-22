@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t brutebeer/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run brutebeer/react-test npm test -- --coverage
+
+after_sucess:
+  - docker build -t brutebeer/multi-client ./client
+  - docker build -t brutebeer/muti-nginx ./nginx
+  - docker build -t brutebeer/multi-server ./server
+  - docker build -t bruteberr/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push brutebeer/multi-client
+  - docker push brutebeer/muti-nginx
+  - docker push brutebeer/multi-server
+  - docker push bruteberr/multi-worker
