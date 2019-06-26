@@ -19,4 +19,4 @@ after_success:
   - docker push brutebeer/multi-client
   - docker push brutebeer/muti-nginx
   - docker push brutebeer/multi-server
-  - docker push bruteberr/multi-worker
+  - docker push brutebeer/multi-worker
