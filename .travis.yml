@@ -12,7 +12,7 @@ after_success:
   - docker build -t brutebeer/multi-client ./client
   - docker build -t brutebeer/muti-nginx ./nginx
   - docker build -t brutebeer/multi-server ./server
-  - docker build -t bruteberr/multi-worker ./worker
+  - docker build -t brutebeer/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
